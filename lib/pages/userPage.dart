@@ -14,6 +14,7 @@ class UserPage extends StatefulWidget {
     Key key,
     this.canPop: false,
     this.onPop,
+    //是否是用户点击的自己，如果是自己，界面是有区别的
     @required this.isSelfPage,
     this.onSwitch,
   }) : super(key: key);
@@ -25,6 +26,7 @@ class UserPage extends StatefulWidget {
 class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
+    //关注按钮
     Widget likeButton = Container(
       color: ColorPlate.back1,
       child: Row(
@@ -39,6 +41,7 @@ class _UserPageState extends State<UserPage> {
         ],
       ),
     );
+    //头像
     Widget avatar = Container(
       height: 120 + MediaQuery.of(context).padding.top,
       padding: EdgeInsets.only(left: 18),
@@ -52,6 +55,7 @@ class _UserPageState extends State<UserPage> {
           width: 74,
           margin: EdgeInsets.only(bottom: 12),
           decoration: BoxDecoration(
+            //边框
             borderRadius: BorderRadius.circular(44),
             color: Colors.orange,
             border: Border.all(
@@ -60,6 +64,7 @@ class _UserPageState extends State<UserPage> {
             ),
           ),
           child: ClipOval(
+            //圆角
             child: Image.network(
               "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
               fit: BoxFit.cover,
@@ -69,6 +74,7 @@ class _UserPageState extends State<UserPage> {
       ),
     );
     Widget body = ListView(
+      //设置滚定的物理特性
       physics: BouncingScrollPhysics(
         parent: AlwaysScrollableScrollPhysics(),
       ),
@@ -76,7 +82,6 @@ class _UserPageState extends State<UserPage> {
         Container(height: 20),
         // 头像与关注
         Stack(
-          alignment: Alignment.bottomLeft,
           children: <Widget>[likeButton, avatar],
         ),
         Container(
@@ -163,10 +168,11 @@ class _UserPageState extends State<UserPage> {
             margin: EdgeInsets.only(top: 400),
             height: double.infinity,
             width: double.infinity,
-            color: ColorPlate.back1,
+            color: ColorPlate.green,
           ),
           body,
           Container(
+            //顶部的返回和更多按钮
             margin: EdgeInsets.only(top: 20),
             height: 62,
             child: TopToolRow(
@@ -213,9 +219,10 @@ class _UserRightButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: 6,
-        horizontal: 20,
+        vertical: 6, //垂直的边距
+        horizontal: 20, //水平的编剧
       ),
+      //四周的padding
       margin: EdgeInsets.all(8),
       alignment: Alignment.center,
       child: Text(
@@ -223,6 +230,7 @@ class _UserRightButton extends StatelessWidget {
         style: TextStyle(color: ColorPlate.orange),
       ),
       decoration: BoxDecoration(
+        //圆角效果
         border: Border.all(color: ColorPlate.orange),
         borderRadius: BorderRadius.circular(4),
       ),
@@ -230,6 +238,7 @@ class _UserRightButton extends StatelessWidget {
   }
 }
 
+//标签
 class _UserTag extends StatelessWidget {
   final String tag;
   const _UserTag({
@@ -259,6 +268,7 @@ class _UserTag extends StatelessWidget {
   }
 }
 
+//用户的视频信息页
 class _UserVideoTable extends StatelessWidget {
   const _UserVideoTable({
     Key key,
@@ -390,6 +400,7 @@ class _SmallVideo extends StatelessWidget {
   }
 }
 
+//选择的标签
 class _PointSelectTextButton extends StatelessWidget {
   final bool isSelect;
   final String title;
@@ -409,6 +420,7 @@ class _PointSelectTextButton extends StatelessWidget {
         children: <Widget>[
           isSelect
               ? Container(
+                  //选中的小圆点
                   width: 6,
                   height: 6,
                   decoration: BoxDecoration(
@@ -418,7 +430,9 @@ class _PointSelectTextButton extends StatelessWidget {
                 )
               : Container(),
           Container(
+            //具体的文字
             padding: EdgeInsets.only(left: 2),
+            color: Colors.indigoAccent,
             child: Text(
               title,
               style: isSelect

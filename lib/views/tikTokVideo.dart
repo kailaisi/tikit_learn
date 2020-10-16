@@ -66,19 +66,19 @@ class TikTokVideoPage extends StatelessWidget {
               ),
             ),
           ),
-          // TODO:状态问题
-          // hidePauseIcon
-          //     ? Container()
-          //     : Container(
-          //         height: double.infinity,
-          //         width: double.infinity,
-          //         alignment: Alignment.center,
-          //         child: Icon(
-          //           Icons.play_circle_outline,
-          //           size: 120,
-          //           color: Colors.white.withOpacity(0.4),
-          //         ),
-          //       ),
+          //TODO:状态问题
+          hidePauseIcon
+              ? Container()
+              : Container(
+                  height: double.infinity,
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  child: Icon(
+                    Icons.play_circle_outline,
+                    size: 120,
+                    color: Colors.white.withOpacity(0.4),
+                  ),
+                ),
         ],
       ),
     );

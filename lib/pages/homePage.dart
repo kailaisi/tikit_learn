@@ -133,7 +133,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         );
       },
     );
-
+    //右滑页面
     var userPage = UserPage(
       isSelfPage: false,
       canPop: true,
@@ -141,6 +141,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         tkController.animateToMiddle();
       },
     );
+    //左划页面
     var searchPage = SearchPage(
       onPop: tkController.animateToMiddle,
     );
@@ -167,15 +168,17 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         // index: currentPage == null ? 0 : 1,
         children: <Widget>[
           PageView.builder(
+            //可以左右滑动的轮播图
             key: Key('home'),
             controller: _pageController,
             pageSnapping: true,
             physics: ClampingScrollPhysics(),
-            scrollDirection: Axis.vertical,
-            itemCount: _videoListController.videoCount,
+            scrollDirection: Axis.vertical, //方向，垂直滑动
+            itemCount: _videoListController.videoCount, //数量
             itemBuilder: (context, i) {
-              // 拼一个视频组件出来
+              // 组装每一个视频组件出来
               var data = videoDataList[i];
+              //是否点赞
               bool isF = SafeMap(favoriteMap)[i].boolean ?? false;
               var player = _videoListController.playerOfIndex(i);
               // 右侧按钮列
@@ -191,6 +194,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                   // showAboutDialog(context: context);
                 },
                 onComment: () {
+                  //评论
                   CustomBottomSheet.showModalBottomSheet(
                     backgroundColor: Colors.white.withOpacity(0),
                     context: context,
@@ -216,6 +220,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                 key: Key(data.url + '$i'),
                 tag: data.url,
                 bottomPadding: hasBottomPadding ? 16.0 : 16.0,
+                //视频用户信息
                 userInfoWidget: VideoUserInfo(
                   desc: data.desc,
                   bottomPadding: hasBottomPadding ? 16.0 : 50.0,
