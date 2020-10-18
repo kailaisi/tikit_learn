@@ -41,14 +41,14 @@ class TikTokVideoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // 右边的按钮列表
     Widget rightButtons = rightButtonColumn ?? Container();
-    // 用户信息
+    //左下角的 用户信息
     Widget userInfo = userInfoWidget ??
         VideoUserInfo(
           bottomPadding: bottomPadding,
         );
     // 视频加载的动画
     // Widget videoLoading = VideoLoadingPlaceHolder(tag: tag);
-    // 视频播放页
+    // 视频播放页。这里使用Gesture来包裹，是为了处理对应的点击事件
     Widget videoContainer = TikTokVideoGesture(
       onAddFavorite: onAddFavorite,
       onSingleTap: onSingleTap,

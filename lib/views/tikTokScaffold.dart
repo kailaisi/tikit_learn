@@ -157,6 +157,7 @@ class _TikTokScaffoldState extends State<TikTokScaffold>
           setState(() {});
         }
       },
+      //水平拖动结束
       onHorizontalDragEnd: (details) => onHorizontalDragEnd(
         details,
         screenWidth,
@@ -167,6 +168,7 @@ class _TikTokScaffoldState extends State<TikTokScaffold>
         animationControllerX?.stop();
         animationControllerY?.stop();
       },
+      //水平滑动过程
       onHorizontalDragUpdate: (details) => onHorizontalDragUpdate(
         details,
         screenWidth,

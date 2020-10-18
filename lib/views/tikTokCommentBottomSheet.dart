@@ -35,23 +35,31 @@ class TikTokCommentBottomSheet extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView(
-              physics: AlwaysScrollableScrollPhysics(
-                parent: BouncingScrollPhysics(),
-              ),
-              children: <Widget>[
-                _CommentRow(),
-                _CommentRow(),
-                _CommentRow(),
-                _CommentRow(),
-                _CommentRow(),
-                _CommentRow(),
-                _CommentRow(),
-                _CommentRow(),
-                _CommentRow(),
-                _CommentRow(),
-              ],
+            child: ListView.builder(
+              itemCount: 128,
+              itemBuilder: (BuildContext context, int index) {
+                return _CommentRow();
+              },
             ),
+
+            // ListView(
+            //   physics: AlwaysScrollableScrollPhysics(
+            //     parent: BouncingScrollPhysics(),
+            //   ),
+
+            //   children: <Widget>[
+            //     _CommentRow(),
+            //     _CommentRow(),
+            //     _CommentRow(),
+            //     _CommentRow(),
+            //     _CommentRow(),
+            //     _CommentRow(),
+            //     _CommentRow(),
+            //     _CommentRow(),
+            //     _CommentRow(),
+            //     _CommentRow(),
+            //   ],
+            // ),
           ),
         ],
       ),
@@ -104,7 +112,8 @@ class _CommentRow extends StatelessWidget {
         width: 36,
         child: ClipOval(
           child: Image.network(
-            "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",fit: BoxFit.cover,
+            "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
+            fit: BoxFit.cover,
           ),
         ),
       ),

@@ -35,6 +35,7 @@ class _TikTokVideoGestureState extends State<TikTokVideoGesture> {
 
   bool canAddFavorite = false;
   bool justAddFavorite = false;
+  //计时器，用于处理是否可以进行点赞
   Timer timer;
 
   @override
@@ -58,6 +59,7 @@ class _TikTokVideoGestureState extends State<TikTokVideoGesture> {
         setState(() {
           if (canAddFavorite) {
             print('添加爱心，当前爱心数量:${icons.length}');
+            //增加一个红心
             icons.add(_p(detail.globalPosition));
             widget.onAddFavorite?.call();
             justAddFavorite = true;
@@ -69,6 +71,7 @@ class _TikTokVideoGestureState extends State<TikTokVideoGesture> {
       onTapUp: (detail) {
         timer?.cancel();
         var delay = canAddFavorite ? 1200 : 600;
+        //启动计时，600ms之后，将字段置为false。判断两次的点击是否是双击效果
         timer = Timer(Duration(milliseconds: delay), () {
           canAddFavorite = false;
           timer = null;
@@ -91,6 +94,7 @@ class _TikTokVideoGestureState extends State<TikTokVideoGesture> {
   }
 }
 
+//点赞之后的红心效果
 class TikTokFavoriteAnimationIcon extends StatefulWidget {
   final Offset position;
   final double size;

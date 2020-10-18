@@ -3,6 +3,7 @@ import 'package:flutter_tiktok/pages/cameraPage.dart';
 import 'package:flutter_tiktok/pages/followPage.dart';
 import 'package:flutter_tiktok/pages/searchPage.dart';
 import 'package:flutter_tiktok/pages/userPage.dart';
+import 'package:flutter_tiktok/views/shareBottomSHeet.dart';
 import 'package:flutter_tiktok/views/tikTokCommentBottomSheet.dart';
 import 'package:flutter_tiktok/views/tikTokHeader.dart';
 import 'package:flutter_tiktok/views/tikTokScaffold.dart';
@@ -191,7 +192,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                   setState(() {
                     favoriteMap[i] = !isF;
                   });
-                  // showAboutDialog(context: context);
+                  showAboutDialog(context: context);
                 },
                 onComment: () {
                   //评论
@@ -202,7 +203,12 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                         TikTokCommentBottomSheet(),
                   );
                 },
-                onShare: () {},
+                onShare: () {
+                  CustomBottomSheet.showModalBottomSheet(
+                    context: context,
+                    builder: (context) => ShareedBottomSheet(),
+                  );
+                },
               );
               // video
               Widget currentVideo = Center(
